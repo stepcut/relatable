@@ -1,7 +1,9 @@
 relatable
 =========
 
-This implements a pure, strongly typed relational algebra.
+This implements a pure, strongly typed relational algebra. It is currently a proof-of-concept implementation.
+
+The type system should prevent you from doing stupid things like projecting non-existent fields or trying to perform a selection/restriction on fields of different types.
 
 This example app:
 
