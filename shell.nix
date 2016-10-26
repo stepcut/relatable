@@ -4,15 +4,15 @@ let
 
   inherit (nixpkgs) pkgs;
 
-  f = { mkDerivation, base, bookkeeper, container, ghc-prim, stdenv
-      , text, type-level-sets
+  f = { mkDerivation, acid-state, base, bookkeeper, container, ghc-prim, stdenv
+      , text, type-level-sets, cabal-install
       }:
       mkDerivation {
         pname = "aql";
         version = "0.1.0.0";
         src = ./.;
         libraryHaskellDepends = [
-          base bookkeeper ghc-prim text 
+          acid-state base bookkeeper ghc-prim text cabal-install
         ];
         description = "strongly typed relational algebra";
         license = stdenv.lib.licenses.bsd3;
