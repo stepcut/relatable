@@ -162,40 +162,16 @@ printTable = mapM_ print
 
 -- * Example Usage
 
--- User Schema
+-- | 'User' Schema
 type User = Book '[ "userid"   :=> Integer
                   , "username" :=> Text
                   ]
 
--- some users
-stepcut :: User
-stepcut =
-  emptyBook & #userid =: 1
-            & #username =: "stepcut"
-
-ddssff :: User
-ddssff =
-  emptyBook & #userid =: 2
-            & #username =: "ddssff"
-
--- Todo Schema
+-- | 'Todo' Schema
 type Todo = Book '[ "todoid" :=> Integer
                   , "ownerid" :=> Integer
                   , "todo"   :=> Text
                   ]
-
-
--- some todos
-todo1 :: Todo
-todo1 = emptyBook & #todoid =: 1
-                  & #ownerid =: 1
-                  & #todo   =: "implement relatable"
-
-todo2 :: Todo
-todo2 = emptyBook & #todoid =: 2
-                  & #ownerid =: 2
-                  & #todo   =: "whip it real good"
-
 
 -- | the database / collection of tables
 data Tables = Tables
@@ -220,6 +196,28 @@ tables = Tables
   { users = [ stepcut, ddssff ]
   , todos = [todo1, todo2]
   }
+  where
+    -- some users
+    stepcut :: User
+    stepcut =
+      emptyBook & #userid   =: 1
+                & #username =: "stepcut"
+
+    ddssff :: User
+    ddssff =
+      emptyBook & #userid   =: 2
+                & #username =: "ddssff"
+
+    -- some todos
+    todo1 :: Todo
+    todo1 = emptyBook & #todoid  =: 1
+                      & #ownerid =: 1
+                      & #todo    =: "implement relatable"
+
+    todo2 :: Todo
+    todo2 = emptyBook & #todoid  =: 2
+                      & #ownerid =: 2
+                      & #todo    =: "whip it real good"
 
 -- ** Queries
 
